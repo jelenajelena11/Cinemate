@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import cinemaIcon from "../assets/images/cinemaIcon.png";
 
 export const Header = () => {
   const active =
@@ -27,7 +28,7 @@ export const Header = () => {
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           <NavLink to="https://flowbite.com/" className="flex items-center">
             <img
-              src="https://flowbite.com/docs/images/logo.svg"
+              src={cinemaIcon}
               className="h-6 mr-3 sm:h-9"
               alt="Flowbite Logo"
             />
