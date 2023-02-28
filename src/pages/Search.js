@@ -13,7 +13,7 @@ export const Search = ({ apiPath }) => {
         <p className="text-3xl text-gray-700 dark:text-white">
           {movies.length === 0
             ? `Results not found for ${queryParam}`
-            : `Results for ${queryParam}`}
+            : `Results for '${queryParam}'`}
         </p>
       </section>
       <section className="py-7 mx-auto">
