@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import cinemaIcon from "../assets/images/cinemaIcon.png";
 
 export const Header = () => {
@@ -12,6 +12,7 @@ export const Header = () => {
   const [darkMode, setDarkMode] = useState(
     JSON.parse(localStorage.getItem("darkMode")) || false
   );
+  const navigate = useNavigate();
 
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
@@ -22,11 +23,19 @@ export const Header = () => {
     }
   }, [darkMode]);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const term = event.target.search.value;
+    event.target.reset();
+
+    return navigate(`search?query=${term}`);
+  };
+
   return (
     <header>
       <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
         <div className="container flex flex-wrap items-center justify-between mx-auto">
-          <NavLink to="https://flowbite.com/" className="flex items-center">
+          <NavLink to="/" className="flex items-center">
             <img
               src={cinemaIcon}
               className="h-6 mr-3 sm:h-9"
@@ -113,12 +122,15 @@ export const Header = () => {
                 </svg>
                 <span className="sr-only">Search icon</span>
               </div>
-              <input
-                type="text"
-                id="search-navbar"
-                className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search..."
-              />
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  id="search-navbar"
+                  className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Search..."
+                  name="search"
+                />
+              </form>
             </div>
             <button
               onClick={() => setHidden(!hidden)}
@@ -166,12 +178,15 @@ export const Header = () => {
                   ></path>
                 </svg>
               </div>
-              <input
-                type="text"
-                id="search-navbar"
-                className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search..."
-              />
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  id="search-navbar"
+                  className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Search..."
+                  name="search"
+                />
+              </form>
             </div>
             <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
