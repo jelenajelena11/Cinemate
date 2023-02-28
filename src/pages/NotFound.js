@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useTitle } from "../hooks/useTitle";
 
 export const NotFound = () => {
+  useTitle("Page Not Found");
+  
   return (
     <main className="flex">
       <div className="flex flex-col dark:text-gray-800 text-white bg-gray-800 justify-center items-center dark:bg-white max-w-sm p-4 rounded m-auto">

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import cinema from "../assets/images/centralCinema.png";
 import { useMovieDetail } from "../hooks/useFetch";
+import { useTitle } from "../hooks/useTitle";
 
 export const MovieDetail = () => {
   const param = useParams();
@@ -10,6 +11,8 @@ export const MovieDetail = () => {
     ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
     : cinema;
 
+  useTitle(movie.original_title);
+  
   return (
     <main>
       <section className="flex flex-wrap justify-around py-5">
