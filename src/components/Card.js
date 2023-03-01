@@ -7,11 +7,11 @@ export const Card = ({ movie }) => {
 
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-3">
-      <Link to={`movie/${movie.id}`}>
+      <Link to={`/movie/${movie.id}`}>
         <img className="rounded-t-lg" src={imagePath} alt="" />
       </Link>
       <div className="p-5">
-        <Link to={`movie/${movie.id}`}>
+        <Link to={`/movie/${movie.id}`}>
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {movie.original_title}
           </h5>
