@@ -12,7 +12,7 @@
 /build
 
 #txt
-apis.txt
+/apis.txt
 
 # misc
 .DS_Store
