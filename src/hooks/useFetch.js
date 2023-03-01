@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useFetch = (apiPath, queryParam = "") => {
+export const useMovies = (apiPath, queryParam = "") => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -15,4 +15,20 @@ export const useFetch = (apiPath, queryParam = "") => {
     fetchMovies();
   }, [apiPath, queryParam]);
   return { movies };
+};
+
+export const useMovieDetail = (param) => {
+  const [movie, setMovie] = useState({});
+
+  useEffect(() => {
+    async function fetchMovieInfo() {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${param.id}?api_key=${process.env.REACT_APP_API_KEY}`
+      );
+      const json = await response.json();
+      setMovie(json);
+    }
+    fetchMovieInfo();
+  }, [param.id]);
+  return { movie };
 };

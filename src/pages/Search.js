@@ -1,12 +1,14 @@
 import { useSearchParams } from "react-router-dom";
 import { Card } from "../components";
-import { useFetch } from "../hooks/useFetch";
+import { useMovies } from "../hooks/useFetch";
+import { useTitle } from "../hooks/useTitle";
 
 export const Search = ({ apiPath }) => {
   const [searchParams] = useSearchParams();
   const queryParam = searchParams.get("query");
-  const { movies } = useFetch(apiPath, queryParam);
-
+  const { movies } = useMovies(apiPath, queryParam);
+  useTitle(queryParam);
+  
   return (
     <main>
       <section className="py-7 text-left">
